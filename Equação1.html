@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<meta charset="UTF-8">
+
+
+<head>
+<title>Equação_1º grau</title>
+<link rel="shortcut icon" href="Equação1.png">
+
+<style>
+body{
+background-image:url('Equação1.png');}
+footer {
+            background-color: none;
+            color: red;
+            padding: 10px;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+ h1{
+         background-color: black;
+         background-image: url(teste.png);
+         color: blue;
+         text-align: center
+        }
+ h2{
+         background-color: black;
+         background-image: url(teste.png);
+         color: green;
+         text-align: center
+        }
+p{
+         background-color: black;
+         color: red;
+         }
+
+
+</style>
+
+
+</head>
+
+
+<body>
+
+<footer><p>&copy Elisário Carlos</p></footer>
+<h1>"Calculadora"</h1>
+<h2>¨Equações do 1º Grau¨</h2>
+<p>Escolha o tipo da equação do 1º grau</p> 
+   <nav>
+         <ul>
+              <li><a href="#a">Tem o valor ax+b=c</a></li>
+              <li><a href="#b">Tem o valor ax=c</a></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+
+              <li style="color:aqua;"><b>By: Elisário Carlos «TheGoat»</b></li>
+              
+         </ul>
+   </nav>
+
+<section id="a" style="display:none;">
+<p>Digite o coeficiente de x <input  type="number" id="ax" placeholder="Coeficiente de x"></p>
+<p>Escolha a operação 
+  <select id="operador">
+        <option value="+">+</option>
+        <option value="-">-</option>
+        <option value="*">x</option>
+        <option value="/">÷</option>
+    </select>
+</p>
+<p>Digite o valor de b <input  type="number" id="bx" placeholder="ax+(b)"></p>
+<p>Digite o valor de c <input  type="number" id="cx" placeholder="ax+b=(c)"></p>
+<button onclick="operar()">Resolver</button>
+<hr>
+<p id="primeira"></p>
+<p></p>
+<p id="resultado1"></p>
+<p id="resultado2"></p>
+<p id="resultado3"></p>
+<p id="resultado4"></p>
+<p id="resultado5"></p>
+<hr>
+<hr>
+<p id="segunda"></p>
+<p id="verificando1"></p>
+<p id="verificando2"></p>
+<p id="verificando3"></p>
+<p id="verificando4"></p>
+<hr>
+
+<script>
+          function operar(){
+    var a = parseFloat(document.getElementById('ax').value);
+    var b = parseFloat(document.getElementById('bx').value);
+    var c = parseFloat(document.getElementById('cx').value);
+    var operador = document.getElementById('operador').value;
+    var op;
+    var op1;
+    var op2;
+if(operador=="+"){
+op="-";
+op1=c-b;
+op2=op1/a;
+}
+if(operador=="-"){
+op="+";
+op1=c+b;
+op2=op1/a;
+}
+if(operador=="*"){
+op="÷";
+op1=c/b;
+op2=op1/a;
+}
+if(operador=="/"){
+op="x";
+op1=c*b;
+op2=op1/a;
+}
+
+
+    document.getElementById('primeira').innerText ="Resolvendo:...";
+    document.getElementById('resultado1').innerText =a+"x "+operador+" "+b+" = "+c;
+    document.getElementById('resultado2').innerText =a+"x = "+c+" "+op+" "+b;
+    document.getElementById('resultado3').innerText =a+"x = "+op1;
+    document.getElementById('resultado4').innerText ="x = "+op1+" ÷ "+a;
+    document.getElementById('resultado5').innerText ="x = "+op2;
+    document.getElementById('segunda').innerText ="Verificando:...";
+    document.getElementById('verificando1').innerText ="x = "+op2;
+    document.getElementById('verificando2').innerText ="("+a+" x "+op2+") "+operador+" "+b;
+    document.getElementById('verificando3').innerText =a*op2+" "+operador+" "+b;
+    document.getElementById('verificando4').innerText =a*op2+" "+operador+" "+b+" = "+c;
+}
+</script>
+
+</section>
+
+
+
+
+<section id="b" style="display:none;">
+<p>Digite o coeficiente de x <input  type="number" id="ax1" placeholder="Coeficiente de x"></p>
+<p>Digite o valor de c <input  type="number" id="cx1" placeholder="ax=(c)"></p>
+<button onclick="operar1()">Resolver</button>
+<hr>
+<p id="encher"><p>
+<p id="first"></p>
+<p id="second"></p>
+<p id="third"></p>
+<hr>
+<hr>
+<p id="fourth"></p>
+<p id="fifth"></p>
+<p id="sixth"></p>
+<p id="seventh"></p>
+<hr>
+
+<script>
+          function operar1(){
+    var ax = parseFloat(document.getElementById('ax1').value);
+    var cx = parseFloat(document.getElementById('cx1').value);
+    document.getElementById('encher').innerText="Resolvendo:...";
+    document.getElementById('first').innerText =ax+"x = "+cx;
+    document.getElementById('second').innerText="x = "+cx+" ÷ "+ax;
+    document.getElementById('third').innerText="x = "+(cx/ax);
+    document.getElementById('fourth').innerText="Verificando:...";
+    document.getElementById('fifth').innerText="x = "+(cx/ax);
+    document.getElementById('sixth').innerText="("+ax+" x "+(cx/ax)+")";
+    document.getElementById('seventh').innerText=(ax*(cx/ax))+" = "+cx;
+    }
+</script>
+
+</section>
+
+</body>
+
+<script>
+
+   // Exibir seção correspondente ao clicar nos links de navegação
+    document.querySelectorAll('nav a').forEach(link => {
+        link.addEventListener('click', function(event) {
+            event.preventDefault();
+            const sectionId = this.getAttribute('href').replace('#', '');
+            document.querySelectorAll('section').forEach(section => {
+                section.style.display = 'none';
+            });
+            document.getElementById(sectionId).style.display = 'block';
+        });
+    });
+
+function a(){
+document.getElementById('resultado').innerText = "Resultado: ";
+}
+</script>
+
+
+
+
+</html>
